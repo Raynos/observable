@@ -15,7 +15,9 @@ Observable objects shared between server and client
             assert(key === "foo")
             assert(value === "bar")
         })
-        observable.set("foo", "bar")
+        observable.set("foo", "bar", function optionalCallback() {
+            // the property has been set everywhere now
+        })
     })
 
     Things.push({ thing: true })
@@ -42,3 +44,4 @@ Soon
 
 Soon
 
+## MIT Licenced

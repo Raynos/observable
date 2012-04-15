@@ -20,4 +20,7 @@ test:
 		--reporter $(REPORTER) \
 		./test/observable.js
 
+web:
+	node ./examples/web/server.js
+
 .PHONY: web test-server test-run test test-builder
