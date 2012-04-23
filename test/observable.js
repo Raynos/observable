@@ -11,7 +11,7 @@ suite("Observable", function () {
     })
 
     test("set", function (done) {
-        Bag.on("change", function (key, value, observable) {
+        Bag.on("observe", function (key, value, observable) {
             assert.equal(key, "foo")
             assert.equal(value, "bar")
             assert.equal(observable, null)
@@ -26,7 +26,7 @@ suite("Observable", function () {
     })
 
     test("remove", function (done) {
-        Bag.on("change", function (key, value, observable) {
+        Bag.on("observe", function (key, value, observable) {
             assert.equal(key, "foo")
             assert.equal(value, undefined)
             assert.equal(observable, null)
@@ -36,7 +36,7 @@ suite("Observable", function () {
     })
 
     test("push", function (done) {
-        Bag.on("change", function (key, value, observable) {
+        Bag.on("observe", function (key, value, observable) {
             assert(key)
             assert.equal(value, "foo")
             assert.equal(observable, null)
@@ -46,10 +46,10 @@ suite("Observable", function () {
     })
 
     test("nested observables", function (done) {
-        Bag.on("change", function (key, value, observable) {
+        Bag.on("observe", function (key, value, observable) {
             assert.equal(key, "foo")
             assert.equal(value.foo, "bar")
-            observable.on("change", function (key, value) {
+            observable.on("observe", function (key, value) {
                 assert.equal(key, "foo")
                 assert.equal(value, "bar")
                 done()
@@ -61,7 +61,7 @@ suite("Observable", function () {
 
     test("callbacks", function (done) {
         var flag = true
-        Bag.on("change", function (key, value, observable) {
+        Bag.on("observe", function (key, value, observable) {
             flag = false
         })
 
