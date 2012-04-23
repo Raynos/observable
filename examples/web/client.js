@@ -1,6 +1,11 @@
 var observable = require('observable'),
     Bag = observable("Bag"),
-    container = document.getElementById("__container")
+    container = document.getElementById("__container"),
+    dnode = require("dnode")
+
+var d = dnode()
+d.use(observable.middleware)
+d.connect()
 
 Bag.on("change", function (key, value) {
     var el = document.getElementById(key)

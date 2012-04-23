@@ -1,13 +1,18 @@
 var connect = require("connect"),
     http = require("http"),
     browserify = require("browserify"),
+    dnode = require("dnode"),
     path = require("path")
 
 var app = connect(),
     server = http.createServer(app),
-    observable = require("observable")(server),
+    d = dnode(),
+    observable = require("observable"),
     Bag = observable("Bag"),
     bundle = browserify()
+
+d.use(observable.middleware)
+d.listen(server)
 
 bundle.require("observable")
 
